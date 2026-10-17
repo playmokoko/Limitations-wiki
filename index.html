@@ -4,30 +4,35 @@
 <title>Mokoko Server Limits</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&family=Griffy&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7eef4;--card:#fffafc;--ink:#4b3552;--soft:#8a7391;--sage:#a8cdb5;--butter:#f8dc93;--peach:#f7bfae;--lilac:#d9c6ec;--line:#ecd9e6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a2030;--card:#372a3f;--ink:#f6e9f2;--soft:#c0a9c9;--line:#4b3a55;--lilac:#5b4472;--sage:#5c8a6f;--butter:#c9a54a;--peach:#c27f6c}}
-:root[data-theme="dark"]{--bg:#2a2030;--card:#372a3f;--ink:#f6e9f2;--soft:#c0a9c9;--line:#4b3a55;--lilac:#5b4472;--sage:#5c8a6f;--butter:#c9a54a;--peach:#c27f6c}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:radial-gradient(circle at 12% 0,color-mix(in srgb,var(--lilac) 70%,transparent),transparent 42%),radial-gradient(circle at 92% 8%,color-mix(in srgb,var(--peach) 55%,transparent),transparent 38%),var(--bg);background-attachment:fixed;color:var(--ink);font:400 16px/1.5 Nunito,system-ui,sans-serif}
+:root{--bg:#f7eef4;--card:#fffafca6;--ink:#4b3552;--soft:#8a7391;--sage:#a8cdb5;--butter:#f8dc93;--peach:#f7bfae;--lilac:#d9c6ec;--line:#ecd9e6;--grad1:var(--lilac);--grad2:var(--peach);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a2030;--card:#372a3f99;--ink:#f6e9f2;--soft:#c0a9c9;--line:#4b3a55;--lilac:#5b4472;--sage:#5c8a6f;--butter:#c9a54a;--peach:#c27f6c}}
+:root[data-theme="dark"]{--bg:#2a2030;--card:#372a3f99;--ink:#f6e9f2;--soft:#c0a9c9;--line:#4b3a55;--lilac:#5b4472;--sage:#5c8a6f;--butter:#c9a54a;--peach:#c27f6c}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:400 16px/1.5 Nunito,system-ui,sans-serif}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg);transition:background .3s}
+.b1,.b2{position:absolute;width:1px;height:1px;border-radius:50%;opacity:.2;transition:box-shadow .8s ease,transform 1.2s ease-in-out}
+.b1{top:10%;left:20%;box-shadow:0 0 60vw 50vw var(--grad1)}
+.b2{bottom:10%;right:20%;box-shadow:0 0 70vw 55vw var(--grad2)}
 .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 18px 60px}
 header{text-align:center;padding:34px 0 10px}
-h1{font:600 clamp(2.2rem,7vw,3.8rem)/1.1 Fredoka,sans-serif;margin:8px 0 6px;background:linear-gradient(90deg,#9b72d1,#e0679a,#e0a02e,#5fae86,#9b72d1);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite}
+h1{font:600 clamp(2.2rem,7vw,3.8rem)/1.1 Fredoka,sans-serif;margin:8px 0 6px;letter-spacing:.5px;background:linear-gradient(90deg,#9b72d1,#e0679a,#e0a02e,#5fae86,#9b72d1);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 8s linear infinite}
 h2{font:600 1.5rem Fredoka;margin:38px 0 4px}
 header p,.sub{margin:0 auto;max-width:520px;color:var(--soft)}
 h2+.sub{margin:0 0 12px;max-width:none}
 .cat{width:min(300px,80%);display:block;margin:0 auto;transform-origin:50% 90%;animation:breathe 4s ease-in-out infinite}
-.tail{transform-origin:20px 100px;animation:wag 3s ease-in-out infinite}
+.tail{transform-origin:20px 100px;animation:wag 3s ease-in-out infinite;cursor:pointer}
 .z{animation:fl 3s ease-in-out infinite;font:600 16px Fredoka}.z2{animation-delay:1s}
 @keyframes wag{50%{transform:rotate(-12deg)}}@keyframes fl{0%,100%{opacity:.2}50%{opacity:1}}
 @keyframes shine{to{background-position:200% center}}@keyframes breathe{50%{transform:scaleY(1.035)}}
-@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(22px) scale(.95)}to{opacity:1;transform:none}}
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
-.note{background:var(--card);border:2px dashed var(--lilac);border-radius:20px;padding:14px 18px}
+.note{background:var(--card);border:2px dashed var(--lilac);border-radius:20px;padding:14px 18px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .note b{font:600 1.05rem Fredoka}.note p{margin:4px 0 0;color:var(--soft);font-size:.92rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px 16px;padding-top:14px}
 .grid.sm{grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:24px 14px}
-.card{--ac:var(--lilac);--pip:#9b72d1;position:relative;background:var(--card);border:2px solid var(--ac);border-radius:22px;padding:16px;transition:transform .2s,box-shadow .2s;animation:rise .5s backwards;animation-delay:calc(var(--i)*25ms)}
+.card{--ac:var(--lilac);--pip:#9b72d1;position:relative;background:var(--card);border:2px solid var(--ac);border-radius:22px;padding:16px;transition:transform .2s,box-shadow .2s;animation:rise .5s backwards;animation-delay:calc(var(--i)*25ms);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .card:hover{transform:translateY(-5px) rotate(-.6deg);box-shadow:0 12px 28px -8px var(--ac)}
+.card:focus-within{border-color:var(--lilac);box-shadow:0 0 0 2px var(--lilac)}
 .card:before,.card:after{content:"";position:absolute;top:-13px;width:0;height:0;border:12px solid transparent;border-bottom:16px solid var(--ac)}
 .card:before{left:20px;border-left-width:8px;border-right-width:16px}
 .card:after{right:20px;border-right-width:8px;border-left-width:16px}
@@ -39,22 +44,22 @@ h2+.sub{margin:0 0 12px;max-width:none}
 .big .num{font-size:3rem}.big small{display:block;color:var(--soft);font-size:.85rem}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .tags span{background:var(--lilac);border-radius:12px;padding:2px 10px;font-size:.78rem;font-weight:700}
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:12px 0}
-input{width:100%;padding:12px 18px;border-radius:30px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
-input:focus,button:focus-visible{outline:3px solid var(--lilac);outline-offset:2px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid color-mix(in srgb,var(--line) 50%,transparent);padding:12px 0;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+input{width:100%;padding:12px 18px;border-radius:30px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+input:focus,button:focus-visible,select:focus-visible{outline:3px solid var(--lilac);outline-offset:2px}
+.kb{position:absolute;right:25px;top:23px;font-size:.7rem;color:var(--soft);pointer-events:none;background:var(--line);padding:2px 8px;border-radius:8px;font-weight:700;transition:opacity .2s}
+input:focus + .kb, input:not(:placeholder-shown) + .kb {opacity:0}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
-button{font:600 .9rem Nunito;padding:7px 15px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .15s}
+button{font:600 .9rem Nunito;padding:7px 15px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .15s,background .2s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 button:hover{transform:translateY(-2px)}button:active{transform:scale(.92)}
 button.on{background:var(--sage);border-color:var(--sage);color:#1f2d25;box-shadow:0 0 16px var(--sage)}
-#sort{margin-left:auto;padding:7px 12px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+#sort{margin-left:auto;padding:7px 12px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 #count{color:var(--soft);margin:8px 2px 0}
-footer{text-align:center;color:var(--soft);padding:40px 0 0}
-@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 .catwrap{position:relative;width:min(300px,80%);margin:0 auto}
 .catwrap .cat{width:100%;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .catwrap:hover .cat{filter:drop-shadow(0 0 3px rgba(160,120,220,.85))}
 .cat,.cat:focus,.cat:active{outline:none;user-select:none;-webkit-user-select:none}
-.cat:focus-visible{filter:drop-shadow(0 0 8px #9886e5)}
+.cat:focus-visible{filter:drop-shadow(0 0 8px #9b72d1)}
 .eO{display:none}.bub{opacity:0;transition:opacity .2s}
 .awake .eC{display:none}.awake .eO{display:inline}.awake .bub{opacity:1}
 .awake .z{animation:none;opacity:0}.awake .tail{animation-duration:.5s}
@@ -62,15 +67,30 @@ footer{text-align:center;color:var(--soft);padding:40px 0 0}
 @keyframes tailShock{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-30deg) scale(1.1)}}
 .pupil{transition:r .3s, transform .1s}
 [data-theme="dark"] .awake .pupil{r:6.5px}
-.heart, .fish{position:absolute;pointer-events:none;font-size:22px;animation:up 1.5s ease-out both}
-.heart{color:#e972a5}
+.heart{position:absolute;pointer-events:none;color:#e0679a;font-size:22px;animation:up 1.5s ease-out both}
 @keyframes up{from{opacity:1;transform:translateY(0) scale(.6)}to{opacity:0;transform:translateY(-100px) scale(1.2)}}
 .pt{position:fixed;top:-30px;z-index:0;pointer-events:none;background:linear-gradient(135deg,#ffdce9,#f4a3c3);border-radius:150% 0 150% 0;box-shadow:0 0 6px rgba(244,163,195,.5);animation:petalFall linear infinite,petalSpin ease-in-out infinite alternate}
 @keyframes petalFall{0%{transform:translate(0,0);opacity:0}8%{opacity:.9}50%{transform:translate(calc(var(--sw)*-.6),55vh)}92%{opacity:.9}100%{transform:translate(var(--sw),108vh);opacity:0}}
 @keyframes petalSpin{from{rotate:0deg}to{rotate:300deg}}
 .nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding-top:16px}
-.nav a{font:600 .9rem Nunito;padding:7px 16px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
+.nav a{font:600 .9rem Nunito;padding:7px 16px;border-radius:20px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .nav a[aria-current]{background:var(--lilac);border-color:var(--lilac)}
+.chk{--ac:var(--sage);--pip:#3f9a6c;max-width:640px;cursor:default}
+.row2{display:flex;gap:10px;flex-wrap:wrap}
+#cs{flex:1;min-width:180px;padding:12px 14px;border-radius:30px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+#cn{width:110px;flex:none;padding:12px 14px;border-radius:30px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.track{height:16px;border-radius:10px;background:color-mix(in srgb,var(--ink) 14%,transparent);margin:16px 0 10px;overflow:hidden}
+#cb{height:100%;width:0;border-radius:10px;background:var(--pip);transition:width .4s,background .3s}
+#cr{font-weight:600}
+footer{text-align:center;color:var(--soft);padding:40px 0 0}
+.empty{grid-column:1 / -1;text-align:center;padding:50px 20px;color:var(--soft);animation:rise .5s backwards;background:var(--card);border:2px dashed var(--line);border-radius:24px;backdrop-filter:blur(12px)}
+.empty .e-icon{font-size:4rem;margin-bottom:10px;display:inline-block;animation:breathe 3s ease-in-out infinite}
+.empty h2{font-family:Fredoka,sans-serif;color:var(--ink);margin:0 0 10px;font-size:1.6rem}
+#btt{position:fixed;bottom:30px;right:30px;z-index:50;width:48px;height:48px;border-radius:50%;padding:0;display:flex;align-items:center;justify-content:center;background:var(--card);border:2px solid var(--lilac);color:var(--ink);opacity:0;pointer-events:none;transform:translateY(20px);transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 24px rgba(0,0,0,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+#btt.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#btt:hover{transform:translateY(-5px);background:var(--lilac);color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.15)}
+#btt svg{width:22px;height:22px}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 /* ===== HALLOWEEN ===== */
 :root{--bg:#f4e4c9;--card:#fff6e3a6;--ink:#2e1a14;--soft:#7a5640;--sage:#7fa86a;--butter:#e8b04a;--peach:#e9792b;--lilac:#c9a8e6;--line:#e2c391;--c-exotic:#d42f35;--c-legendary:#e8870a;--c-cosmic:#7c5ce0;--c-divine:#12a8c4;--c-celestial:#27b45a;--c-secret:#d94a8f}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#130b1d;--card:#25153599;--ink:#f6e8cf;--soft:#b9a2cb;--sage:#6fbf5e;--butter:#f2c14e;--peach:#ff8a2b;--lilac:#5a2f86;--line:#4d2f66;--c-exotic:#ff5252;--c-legendary:#ff9f1c;--c-cosmic:#b38cff;--c-divine:#5ce1e6;--c-celestial:#7bff6a;--c-secret:#ff6fb1}}
@@ -126,12 +146,14 @@ h1{animation:shine 8s linear infinite;filter:drop-shadow(0 0 8px rgba(255,138,43
 }
 @media (max-width:760px),(pointer:coarse){body{background-attachment:scroll}}
 </style></head><body>
+<div class="bg-blobs"><div class="b1"></div><div class="b2"></div></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="gh" viewBox="0 0 24 28"><path d="M12 1C6 1 3 6 3 12v15l3-3 3 3 3-3 3 3 3-3 3 3V12C21 6 18 1 12 1z" fill="#fff"/><circle cx="9" cy="12" r="2" fill="#2a1840"/><circle cx="15" cy="12" r="2" fill="#2a1840"/><ellipse cx="12" cy="17" rx="2" ry="2.5" fill="#2a1840"/></symbol><symbol id="sp" viewBox="0 0 24 24"><circle cx="12" cy="13" r="5"/><circle cx="12" cy="8" r="3"/><path d="M8 11L2 7M8 13L1 13M8 15L2 20M9 17L5 23M16 11L22 7M16 13L23 13M16 15L22 20M15 17L19 23" fill="none" stroke-width="1.5"/></symbol><symbol id="wb" viewBox="0 0 120 120"><g stroke="currentColor" fill="none" stroke-width="1"><path d="M0 0L120 0M0 0L108 44M0 0L84 84M0 0L44 108M0 0L0 120"/><path d="M30 0Q26 26 0 30M60 0Q52 52 0 60M90 0Q78 78 0 90"/></g></symbol></svg>
 <div class="deco" aria-hidden="true"><div class="moon"></div><div class="fog"></div>
 <svg class="web" viewBox="0 0 120 120"><use href="#wb"/></svg><svg class="web r" viewBox="0 0 120 120"><use href="#wb"/></svg>
 <div class="spider" style="left:9%;--len:90px"><i></i><svg viewBox="0 0 24 24"><use href="#sp"/></svg></div>
 <div class="spider" style="right:14%;--len:55px;animation-delay:-1.5s"><i></i><svg viewBox="0 0 24 24"><use href="#sp"/></svg></div>
 <svg class="ghost g1" viewBox="0 0 24 28"><use href="#gh"/></svg><svg class="ghost g2" viewBox="0 0 24 28"><use href="#gh"/></svg><svg class="ghost g3" viewBox="0 0 24 28"><use href="#gh"/></svg></div>
+
 <div class="wrap">
 <nav class="nav"><button id="tg" type="button">Light mode</button><button id="sn" type="button">Sound: on</button><button id="cst" type="button">Costume: Witch</button></nav>
 <header>
@@ -179,16 +201,23 @@ h1{animation:shine 8s linear infinite;filter:drop-shadow(0 0 8px rgba(255,138,43
 <h2>Mob group limits</h2>
 <p class="sub">Combined caps across several mob types. They apply on top of each mob's own limit below.</p>
 <div class="grid" id="groups"></div>
+<h2>Limit checker</h2>
+<p class="sub">Pick something and type how many you have. Blocks count per chunk, mobs per 3x3 chunk area.</p>
+<div class="card chk"><div class="row2"><select id="cs" aria-label="Item"></select><input id="cn" type="number" min="0" value="0" aria-label="How many you have"></div><div class="track"><div id="cb"></div></div><div id="cr"></div></div>
 <h2>Individual entity limits</h2>
 <p class="sub">Max per 3x3 chunk area. Unlimited means no cap.</p>
-<div class="bar">
+<div class="bar" style="position:relative">
 <input id="q" type="search" placeholder="Search a mob or entity…" aria-label="Search">
+<div class="kb">/</div>
 <div class="chips" id="chips"></div>
 <div id="count"></div>
 </div>
 <div class="grid sm" id="grid"></div>
 <footer>Made with love (and a little fright) for the Mokoko server</footer>
 </div>
+<button id="btt" type="button" title="Back to top" aria-label="Back to top">
+<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 <script>
 const $=id=>document.getElementById(id);
 const B=[["Hopper",12],["Observer",12],["Piston",12],["Sticky Piston",12]];
@@ -197,19 +226,46 @@ const L={0:"Bat",1:"Giant",2:"Fox,Frog,Ghast,Glow Squid,Nautilus,Polar Bear,Rava
 const E=[];for(const k in L)L[k].split(",").forEach(n=>E.push({n,m:+k}));
 const TN=["","Tiny","Small","Medium","Large","Unlimited"],tr=m=>m>=999?5:m<=3?1:m<=8?2:m<=15?3:4;
 const F={All:()=>1,"Tiny 0-3":m=>tr(m)==1,"Small 4-8":m=>tr(m)==2,"Medium 9-15":m=>tr(m)==3,"Large 16+":m=>tr(m)==4,Unlimited:m=>m>=999};
+const C={"All":['var(--lilac)','var(--peach)'],"Tiny 0-3":['var(--peach)','var(--butter)'],"Small 4-8":['var(--butter)','var(--sage)'],"Medium 9-15":['var(--sage)','var(--lilac)'],"Large 16+":['#e0679a','var(--lilac)'],"Unlimited":['#2f98ab','var(--sage)']};
 let cur="All";
 $("blocks").innerHTML=B.map((b,i)=>`<div class="card big u3" style="--i:${i}"><h3>${b[0]}</h3><div class="num">${b[1]}</div><small>max per chunk</small></div>`).join("");
 $("groups").innerHTML=G.map((g,i)=>`<div class="card big u4" style="--i:${i}"><h3>${g[0]}</h3><div class="num">${g[1]}</div><small>combined per 3x3 area</small><div class="tags">${g[2].split(", ").map(t=>`<span>${t}</span>`).join("")}</div></div>`).join("");
 $("chips").innerHTML=Object.keys(F).map(k=>`<button data-k="${k}" class="${k=="All"?"on":""}">${k}</button>`).join("")+`<select id="sort" aria-label="Sort"><option value="n">A-Z</option><option value="lo">Lowest limit</option><option value="hi">Highest limit</option></select>`;
+
 function render(){
  const q=$("q").value.toLowerCase().trim(),s=$("sort").value;
  const r=E.filter(e=>F[cur](e.m)&&e.n.toLowerCase().includes(q));
  r.sort((x,y)=>s=="lo"?x.m-y.m||x.n.localeCompare(y.n):s=="hi"?y.m-x.m||x.n.localeCompare(y.n):x.n.localeCompare(y.n));
- $("count").textContent=r.length+" of "+E.length+" entities"+(r.length?"":" - nothing here, try another search");if(!r.length&&q&&window.catSay)catSay("Only ghosts here...");
+ if(!r.length){
+  $("count").textContent="0 entities";
+  $("grid").innerHTML=`<div class="empty"><div class="e-icon">👻</div><h2>Boo... nothing found!</h2><p>Try searching for a different mob or clearing your filters.</p></div>`;
+  if(window.catSay && q) window.catSay("Only ghosts here...");
+  return;
+ }
+ $("count").textContent=r.length+" of "+E.length+" entities";
  $("grid").innerHTML=r.map((e,n)=>`<div class="card u${tr(e.m)}" style="--i:${Math.min(n,16)}"><div class="row"><h3>${e.n}</h3><span class="num">${e.m>=999?"&infin;":e.m}</span></div><div class="lab">${TN[tr(e.m)]}</div></div>`).join("");
 }
-$("chips").addEventListener("click",e=>{const k=e.target.dataset.k;if(!k)return;cur=k;document.querySelectorAll("#chips button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));render()});
-$("chips").addEventListener("change",render);$("q").addEventListener("input",render);
+
+$("chips").addEventListener("click",e=>{
+ const k=e.target.dataset.k;if(!k)return;cur=k;
+ document.querySelectorAll("#chips button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));
+ document.documentElement.style.setProperty('--grad1',C[k][0]);document.documentElement.style.setProperty('--grad2',C[k][1]);
+ document.querySelector('.b1').style.transform=`translate(${Math.random()*10-5}%,${Math.random()*10-5}%) scale(${1+Math.random()*.1})`;
+ document.querySelector('.b2').style.transform=`translate(${Math.random()*10-5}%,${Math.random()*10-5}%) scale(${1+Math.random()*.1})`;
+ render();
+});
+$("chips").addEventListener("change",render);
+$("q").addEventListener("input",()=>{
+ if(!document.getElementById("cat").classList.contains("awake") && $("q").value.trim().length>0 && window.catSay) window.catSay("Looking for something?");
+ render();
+});
+
+// Pro Keyboard Shortcuts
+document.addEventListener('keydown', e => {
+ if (e.key === '/' && document.activeElement !== $("q")) { e.preventDefault(); $("q").focus(); }
+ if (e.key === 'Escape' && document.activeElement === $("q")) { $("q").value = ""; $("q").blur(); render(); }
+});
+
 (()=>{const c=$("cat"),w=$("cw"),t=c.querySelector(".bub text"),M=["Meow!","Boo!","Trick or treat!","Pet me more!","Welcome to Mokoko!","Spooky purr..."];let i=0,tm;const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
 let off=false;try{off=localStorage.getItem("mk-sound")=="0"}catch(e){}
 let ac;
@@ -254,7 +310,7 @@ const sn=$("sn"),sl=()=>sn.textContent=off?"Sound: off":"Sound: on";sl();sn.oncl
 window.mkSoundOn=()=>!off;window.mkMeow=meow;window.catSay=pet;
 
 $("c-tail").addEventListener("click",e=>{e.stopPropagation();pet("Hey! Not the tail!",true)});
-c.addEventListener("click",e=>{pet()});
+c.addEventListener("click",()=>{pet()});
 c.addEventListener("keydown",e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();pet()}});
 
 const el=$("eyeL"),er=$("eyeR");
@@ -264,15 +320,35 @@ document.addEventListener("mousemove",e=>{
     const cx=r.left+r.width*0.6,cy=r.top+r.height*0.5;
     const dx = (e.clientX-cx)/80, dy = (e.clientY-cy)/80;
     const ax=Math.max(-3,Math.min(3,dx));
-    const ay=Math.max(-3,Math.min(1.5,dy)); 
+    const ay=Math.max(-3,Math.min(1.5,dy));
     el.style.transform=`translate(${ax}px,${ay}px)`;
     er.style.transform=`translate(${ax}px,${ay}px)`;
 });
-
-$("q").addEventListener("input",()=>{const val=$("q").value.toLowerCase().trim();if(val==="fish"||val==="treat")pet("Nom nom nom!",false,true);else if(!c.classList.contains("awake")&&val.length>0)pet("Looking for something?")});
 })();
-(()=>{const r=document.documentElement,b=document.getElementById("tg");const dk=()=>r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;const lab=()=>b.textContent=dk()?"Light mode":"Dark mode";try{const t=localStorage.getItem("mk-theme");if(t)r.dataset.theme=t}catch(e){}lab();b.onclick=()=>{r.dataset.theme=dk()?"light":"dark";try{localStorage.setItem("mk-theme",r.dataset.theme)}catch(e){}lab()}})();
+
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches)for(let i=0;i<22;i++){const o=document.createElement("i");o.className="pt";const z=9+Math.random()*8;o.style.cssText=`left:${Math.random()*98}%;width:${z}px;height:${z*.8}px;--sw:${Math.random()*240-120}px;animation-duration:${12+Math.random()*10}s,${3+Math.random()*3}s;animation-delay:${-Math.random()*22}s,${-Math.random()*5}s`;document.body.appendChild(o)}
+(()=>{const r=document.documentElement,b=document.getElementById("tg");const dk=()=>r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;const lab=()=>b.textContent=dk()?"Light mode":"Dark mode";try{const t=localStorage.getItem("mk-theme");if(t)r.dataset.theme=t}catch(e){}lab();b.onclick=()=>{r.dataset.theme=dk()?"light":"dark";try{localStorage.setItem("mk-theme",r.dataset.theme)}catch(e){}lab()}})();
+
+const grp={};G.forEach(g=>g[2].split(", ").forEach(n=>(grp[n]=grp[n]||[]).push(g[0]+" ("+g[1]+" combined)")));
+const opts=[],sel=$("cs");
+[["Blocks (per chunk)",B.map(b=>({n:b[0],l:b[1],u:"chunk"}))],["Mob groups (3x3 area)",G.map(g=>({n:g[0]+" group",l:g[1],u:"area"}))],["Entities (3x3 area)",E.slice().sort((a,b)=>a.n.localeCompare(b.n)).map(e=>({n:e.n,l:e.m,u:"area",g:grp[e.n]}))]].forEach(([t,l])=>{const og=document.createElement("optgroup");og.label=t;l.forEach(o=>{const op=document.createElement("option");op.value=opts.length;op.textContent=o.n;opts.push(o);og.appendChild(op)});sel.appendChild(og)});
+let last="";
+function chk(){const o=opts[sel.value],n=Math.max(0,Math.floor(+$("cn").value||0));let st="",msg,col="#3f9a6c",p=0;
+if(o.l>=999){st="free";msg=o.n+" has no limit.";col="#2f98ab"}
+else{p=Math.min(n/o.l,1)*100;
+if(!n)msg="Limit: "+o.l+" per "+(o.u=="chunk"?"chunk":"3x3 chunk area")+". Type how many you have.";
+else if(n>o.l){st="over";col="#e0679a";msg="Over by "+(n-o.l)+". Remove "+(n-o.l)+" to stay at the limit of "+o.l+"."}
+else if(n==o.l){st="full";col="#e0a02e";msg="Right at the limit of "+o.l+". No room for more."}
+else if(n/o.l>=.8){st="near";col="#e0a02e";msg="Almost full: "+(o.l-n)+" left out of "+o.l+"."}
+else{st="ok";msg="You're good: "+(o.l-n)+" left out of "+o.l+"."}}
+$("cb").style.width=p+"%";$("cb").style.background=col;$("cr").textContent=msg+(o.g?" Also counts toward "+o.g.join(" and ")+".":"");
+if(st&&st!=last&&window.catSay)catSay({over:"Too many!",full:"Right at max!",near:"Almost full!",ok:"Purrfect!",free:"No limit!"}[st]);last=st}
+sel.onchange=()=>{last="";chk()};$("cn").oninput=chk;chk();
+
+const btt=$("btt");
+window.addEventListener('scroll',()=>{if(window.scrollY>300)btt.classList.add('show');else btt.classList.remove('show')});
+btt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+render();
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches){const bat='<svg viewBox="0 0 30 14"><path d="M15 4c-1-3-5-5-14-3 3 2 3 6 2 9 2-2 5-2 7 0 1-3 3-4 5-4s4 1 5 4c2-2 5-2 7 0-1-3-1-7 2-9-9-2-13 0-14 3z"/></svg>';
 function spawnBat(){const b=document.createElement("div");b.className="bat";b.innerHTML=bat;const z=24+Math.random()*26,y=3+Math.random()*50,d=9+Math.random()*8,rt=Math.random()<.5;b.style.cssText=`top:${y}%;width:${z}px;animation-duration:${d}s;--from:${rt?"-8vw":"108vw"};--to:${rt?"108vw":"-8vw"};${rt?"":"transform:scaleX(-1)"}`;document.body.appendChild(b);setTimeout(()=>b.remove(),d*1000+200)}
 setTimeout(spawnBat,1200);setInterval(spawnBat,5200)}
@@ -281,5 +357,4 @@ function go(e){if(e)e.stopPropagation();const n=O[(O.indexOf(c.dataset.cs)+1)%O.
 try{const v=localStorage.getItem("mk-cs");if(O.includes(v)){c.dataset.cs=v;B.textContent="Costume: "+L[v]}}catch(x){}
 window.mkEM={witch:["🧙","🔮","🧹"],ghost:["👻","💨"],vamp:["🦇","🩸"],mummy:["🩹","🧻"],pump:["🎃","🍬"],skel:["💀","🦴"],devil:["😈","🔥"]};B.onclick=()=>go()})();
 let st;addEventListener("scroll",()=>{document.documentElement.classList.add("sc");clearTimeout(st);st=setTimeout(()=>document.documentElement.classList.remove("sc"),160)},{passive:true});
-render();
 </script></body></html>
